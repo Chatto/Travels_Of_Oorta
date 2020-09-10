@@ -1,0 +1,111 @@
+00080000 N _stack
+02000000 A __eheap_start
+02000000 A __end__
+02000000 A __ewram_end
+02000000 T __ewram_start
+02000000 A __sbss_end__
+02000000 A __sbss_start__
+02040000 T __eheap_end
+03000000 A __bss_start
+03000000 A __bss_start__
+03000000 A __iwram_end__
+03000000 T __iwram_start
+03000000 A __iwram_start__
+03000000 T __TMC_END__
+03000000 b completed.9071
+03000004 b object.9076
+0300001c 00000002 B __key_prev
+0300001e 00000002 B __key_curr
+03000020 00000004 B fake_heap_end
+03000024 A __bss_end__
+03000024 A __data_start__
+03000024 t __frame_dummy_init_array_entry
+03000024 A __init_array_start
+03000024 A __preinit_array_end
+03000024 A __preinit_array_start
+03000028 t __do_global_dtors_aux_fini_array_entry
+03000028 A __fini_array_start
+03000028 A __init_array_end
+0300002c A __data_end__
+0300002c A __fini_array_end
+0300002c T __iheap_start
+0300002c T __iwram_overlay_end
+0300002c T __iwram_overlay_start
+03007f00 A __sp_usr
+03007fa0 A __sp_irq
+03007ff8 A __irq_flags
+03008000 T __iwram_top
+08000000 T __text_start
+08000000 T _start
+080000c0 t rom_header_end
+080000c4 T __boot_method
+080000c5 T __slave_number
+080000e0 T start_vector
+08000126 t DoEWRAMClear
+08000130 t SkipEWRAMClear
+08000166 t CIW0Skip
+08000170 t CEW0Skip
+08000186 t ClearMem
+08000190 t ClrLoop
+08000196 t ClearMX
+08000198 t _blx_r3_stub
+0800019a t CopyMemChk
+0800019c t CopyMem
+080001a4 t CIDLoop
+080001ac t CIDExit
+08000210 T _init
+08000220 t deregister_tm_clones
+0800024c t register_tm_clones
+08000280 t __do_global_dtors_aux
+080002b0 t frame_dummy
+080002d8 0000004c T render_bg
+08000324 0000006c T render_parallax
+08000390 000000a8 T main
+08000438 00000290 W __aeabi_dmul
+08000438 00000290 W __muldf3
+080006c8 T __aeabi_drsub
+080006d0 00000314 T __aeabi_dsub
+080006d0 00000314 T __subdf3
+080006d4 00000310 T __adddf3
+080006d4 00000310 T __aeabi_dadd
+080009e4 00000024 T __aeabi_ui2d
+080009e4 00000024 T __floatunsidf
+08000a08 00000028 T __aeabi_i2d
+08000a08 00000028 T __floatsidf
+08000a30 00000048 T __aeabi_f2d
+08000a30 00000048 T __extendsfdf2
+08000a78 00000074 T __aeabi_ul2d
+08000a78 00000074 T __floatundidf
+08000a8c 00000060 T __aeabi_l2d
+08000a8c 00000060 T __floatdidf
+08000aec 00000054 T __aeabi_d2uiz
+08000aec 00000054 T __fixunsdfsi
+08000b40 0000004e T __libc_init_array
+08000b90 000000a6 T memcpy
+08000c38 00000008 t ____aeabi_d2uiz_from_thumb
+08000c40 00000008 t ____aeabi_dmul_from_thumb
+08000c48 00000008 t ____aeabi_i2d_from_thumb
+08000c50 T __text_end
+08000c50 T _fini
+08000c5c 00000020 R title_parallax1Pal
+08000c7c 00000800 R title_parallax1Map
+0800147c 00001da0 R title_parallax1Tiles
+0800321c 00000020 R title_bgPal
+0800323c 00000800 R title_bgMap
+08003a3c 00001760 R title_bgTiles
+0800519c r 
+0800519c R __exidx_end
+0800519c R __exidx_start
+0800519c r __FRAME_END__
+080051a0 A __data_lma
+080051a0 A __init_lma
+080051a0 R __iwram_lma
+080051a0 A __preinit_lma
+080051a4 A __fini_lma
+080051a8 A __ewram_lma
+080051a8 A __iwram_overlay_lma
+080051a8 A __jcr_lma
+080051a8 A __load_start_iwram0
+080051a8 A __load_stop_iwram0
+080051a8 A __pad_lma
+080051b0 A __rom_end__
