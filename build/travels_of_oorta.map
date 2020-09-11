@@ -59,53 +59,57 @@
 08000280 t __do_global_dtors_aux
 080002b0 t frame_dummy
 080002d8 0000004c T render_bg
-08000324 0000006c T render_parallax
-08000390 000000a8 T main
-08000438 00000290 W __aeabi_dmul
-08000438 00000290 W __muldf3
-080006c8 T __aeabi_drsub
-080006d0 00000314 T __aeabi_dsub
-080006d0 00000314 T __subdf3
-080006d4 00000310 T __adddf3
-080006d4 00000310 T __aeabi_dadd
-080009e4 00000024 T __aeabi_ui2d
-080009e4 00000024 T __floatunsidf
-08000a08 00000028 T __aeabi_i2d
-08000a08 00000028 T __floatsidf
-08000a30 00000048 T __aeabi_f2d
-08000a30 00000048 T __extendsfdf2
-08000a78 00000074 T __aeabi_ul2d
-08000a78 00000074 T __floatundidf
-08000a8c 00000060 T __aeabi_l2d
-08000a8c 00000060 T __floatdidf
-08000aec 00000054 T __aeabi_d2uiz
-08000aec 00000054 T __fixunsdfsi
-08000b40 0000004e T __libc_init_array
-08000b90 000000a6 T memcpy
-08000c38 00000008 t ____aeabi_d2uiz_from_thumb
-08000c40 00000008 t ____aeabi_dmul_from_thumb
-08000c48 00000008 t ____aeabi_i2d_from_thumb
-08000c50 T __text_end
-08000c50 T _fini
-08000c5c 00000020 R title_parallax1Pal
-08000c7c 00000800 R title_parallax1Map
-0800147c 00001da0 R title_parallax1Tiles
-0800321c 00000020 R title_bgPal
-0800323c 00000800 R title_bgMap
-08003a3c 00001760 R title_bgTiles
-0800519c r 
-0800519c R __exidx_end
-0800519c R __exidx_start
-0800519c r __FRAME_END__
-080051a0 A __data_lma
-080051a0 A __init_lma
-080051a0 R __iwram_lma
-080051a0 A __preinit_lma
-080051a4 A __fini_lma
-080051a8 A __ewram_lma
-080051a8 A __iwram_overlay_lma
-080051a8 A __jcr_lma
-080051a8 A __load_start_iwram0
-080051a8 A __load_stop_iwram0
-080051a8 A __pad_lma
-080051b0 A __rom_end__
+08000324 00000050 T render_parallax1
+08000374 00000050 T render_parallax2
+080003c4 000000d4 T main
+08000498 00000290 W __aeabi_dmul
+08000498 00000290 W __muldf3
+08000728 T __aeabi_drsub
+08000730 00000314 T __aeabi_dsub
+08000730 00000314 T __subdf3
+08000734 00000310 T __adddf3
+08000734 00000310 T __aeabi_dadd
+08000a44 00000024 T __aeabi_ui2d
+08000a44 00000024 T __floatunsidf
+08000a68 00000028 T __aeabi_i2d
+08000a68 00000028 T __floatsidf
+08000a90 00000048 T __aeabi_f2d
+08000a90 00000048 T __extendsfdf2
+08000ad8 00000074 T __aeabi_ul2d
+08000ad8 00000074 T __floatundidf
+08000aec 00000060 T __aeabi_l2d
+08000aec 00000060 T __floatdidf
+08000b4c 00000054 T __aeabi_d2uiz
+08000b4c 00000054 T __fixunsdfsi
+08000ba0 0000004e T __libc_init_array
+08000bf0 000000a6 T memcpy
+08000c98 00000008 t ____aeabi_d2uiz_from_thumb
+08000ca0 00000008 t ____aeabi_dmul_from_thumb
+08000ca8 00000008 t ____aeabi_i2d_from_thumb
+08000cb0 T __text_end
+08000cb0 T _fini
+08000cbc 00000020 R title_parallax2Pal
+08000cdc 00000800 R title_parallax2Map
+080014dc 00002840 R title_parallax2Tiles
+08003d1c 00000020 R title_parallax1Pal
+08003d3c 00000800 R title_parallax1Map
+0800453c 00003b80 R title_parallax1Tiles
+080080bc 00000020 R title_bgPal
+080080dc 00000800 R title_bgMap
+080088dc 00002ec0 R title_bgTiles
+0800b79c r 
+0800b79c R __exidx_end
+0800b79c R __exidx_start
+0800b79c r __FRAME_END__
+0800b7a0 A __data_lma
+0800b7a0 A __init_lma
+0800b7a0 R __iwram_lma
+0800b7a0 A __preinit_lma
+0800b7a4 A __fini_lma
+0800b7a8 A __ewram_lma
+0800b7a8 A __iwram_overlay_lma
+0800b7a8 A __jcr_lma
+0800b7a8 A __load_start_iwram0
+0800b7a8 A __load_stop_iwram0
+0800b7a8 A __pad_lma
+0800b7b0 A __rom_end__

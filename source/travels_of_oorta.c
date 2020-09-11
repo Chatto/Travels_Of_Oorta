@@ -1,3 +1,4 @@
+#include <maxmod.h>
 #include <string.h>
 #include "toolbox.h"
 #include "input.h"
@@ -16,33 +17,50 @@ void render_bg()
 
 	// set up BG0 for a 4bpp 64x32t map, using
 	//   using charblock 0 and screenblock 31
-	REG_BG0CNT= BG_CBB(0) | BG_SBB(28) | BG_4BPP | BG_AFF_16x16;
+	REG_BG0CNT= BG_CBB(0) | BG_SBB(28) | BG_8BPP | BG_REG_64x64;
 
 }
 
-void render_parallax()
+void render_parallax1()
 {
 	int ix, iy;
 	// Load palette
 	memcpy(pal_bg_mem+16, title_parallax1Pal, title_parallax1PalLen);
 	// Load tiles into CBB 0
-	memcpy(&tile_mem[16][0], title_parallax1Tiles, title_parallax1TilesLen);
+	memcpy(&tile_mem[1][0], title_parallax1Tiles, title_parallax1TilesLen);
 	// Load map into SBB 30
 	memcpy(&se_mem[28][0], title_parallax1Map, title_parallax1MapLen);
-
-    for(ix=1; ix<32; ix++)
-        pal_bg_mem[ix]= pal_bg_mem[ix] ^ CLR_MAG;
+      //  pal_bg_mem[17]= pal_bg_mem[17] ^ CLR_MAG;
 	// set up BG0 for a 4bpp 64x32t map, using
 	//   using charblock 0 and screenblock 31
-	REG_BG1CNT= BG_CBB(16) | BG_SBB(28) | BG_4BPP | BG_AFF_16x16;
+	REG_BG1CNT= BG_CBB(1) | BG_SBB(28) | BG_8BPP | BG_REG_64x64;
+
+}
+void render_parallax2()
+{
+	int ix, iy;
+	// Load palette
+	memcpy(pal_bg_mem+32, title_parallax2Pal, title_parallax2PalLen);
+	// Load tiles into CBB 0
+	memcpy(&tile_mem[2][0], title_parallax2Tiles, title_parallax2TilesLen);
+	// Load map into SBB 30
+	memcpy(&se_mem[28][0], title_parallax2Map, title_parallax2MapLen);
+
+    //pal_bg_mem[32]= pal_bg_mem[32] ^ CLR_MAG;
+	// set up BG0 for a 4bpp 64x32t map, using
+	//   using charblock 0 and screenblock 31
+	REG_BG2CNT= BG_CBB(2) | BG_SBB(28) | BG_8BPP | BG_REG_64x64;
 
 }
 
 int main()
 {
 	render_bg();
-	render_parallax();
-	REG_DISPCNT= DCNT_MODE0 | DCNT_BG0 | DCNT_BG1;
+	render_parallax1();
+	render_parallax2();
+	REG_DISPCNT= DCNT_MODE0 | DCNT_BG0 | DCNT_BG1 | DCNT_BG2;
+
+	
 /*
 	// Load palette
 	memcpy(pal_bg_mem, title_parallax1Pal, title_parallax1PalLen);
@@ -69,6 +87,8 @@ int main()
 		REG_BG0VOFS= y;
 		REG_BG1HOFS= x*.5;
 		REG_BG1VOFS= y;
+		REG_BG2HOFS= x*.25;
+		REG_BG2VOFS= y;
 	}
 
 	return 0;
