@@ -13,11 +13,13 @@ void render_bg()
 	// Load tiles into CBB 0
 	memcpy(&tile_mem[0][0], title_bgTiles, title_bgTilesLen);
 	// Load map into SBB 30
-	memcpy(&se_mem[28][0], title_bgMap, title_bgMapLen);
+	memcpy(&se_mem[20][0], title_bgMap, title_bgMapLen);
 
 	// set up BG0 for a 4bpp 64x32t map, using
 	//   using charblock 0 and screenblock 31
-	REG_BG0CNT= BG_CBB(0) | BG_SBB(28) | BG_8BPP | BG_REG_64x64;
+	REG_BG0CNT= BG_PRIO(3) | BG_CBB(0) | BG_SBB(20) | BG_4BPP | BG_AFF_16x16;
+	REG_DISPCNT= DCNT_MODE0 | DCNT_BG0;
+
 
 }
 
@@ -29,11 +31,13 @@ void render_parallax1()
 	// Load tiles into CBB 0
 	memcpy(&tile_mem[1][0], title_parallax1Tiles, title_parallax1TilesLen);
 	// Load map into SBB 30
-	memcpy(&se_mem[28][0], title_parallax1Map, title_parallax1MapLen);
+	memcpy(&se_mem[22][0], title_parallax1Map, title_parallax1MapLen);
       //  pal_bg_mem[17]= pal_bg_mem[17] ^ CLR_MAG;
 	// set up BG0 for a 4bpp 64x32t map, using
 	//   using charblock 0 and screenblock 31
-	REG_BG1CNT= BG_CBB(1) | BG_SBB(28) | BG_8BPP | BG_REG_64x64;
+	REG_BG1CNT= BG_PRIO(2) | BG_CBB(1) | BG_SBB(22) | BG_4BPP | BG_AFF_16x16;
+	REG_DISPCNT= DCNT_MODE0 | DCNT_BG1;
+
 
 }
 void render_parallax2()
@@ -44,12 +48,14 @@ void render_parallax2()
 	// Load tiles into CBB 0
 	memcpy(&tile_mem[2][0], title_parallax2Tiles, title_parallax2TilesLen);
 	// Load map into SBB 30
-	memcpy(&se_mem[28][0], title_parallax2Map, title_parallax2MapLen);
+	memcpy(&se_mem[24][0], title_parallax2Map, title_parallax2MapLen);
 
     //pal_bg_mem[32]= pal_bg_mem[32] ^ CLR_MAG;
 	// set up BG0 for a 4bpp 64x32t map, using
 	//   using charblock 0 and screenblock 31
-	REG_BG2CNT= BG_CBB(2) | BG_SBB(28) | BG_8BPP | BG_REG_64x64;
+	REG_BG2CNT= BG_PRIO(1) | BG_CBB(2) | BG_SBB(24) | BG_4BPP | BG_AFF_16x16;
+	REG_DISPCNT= DCNT_MODE0 | DCNT_BG2;
+
 
 }
 
