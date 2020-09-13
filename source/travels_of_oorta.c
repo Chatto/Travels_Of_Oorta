@@ -1,100 +1,133 @@
-#include <maxmod.h>
 #include <string.h>
+
 #include "toolbox.h"
 #include "input.h"
-#include "title_bg.h"
-#include "title_parallax1.h"
-#include "title_parallax2.h"
 
-void render_bg()
+//sprites
+
+//backgrounds
+#include "Sky.h"
+#include "DunesFar.h"
+#include "DunesNear.h"
+#include "TitleLogo.h"
+
+
+#define SkyLayer 3
+void renderSky()
 {
-	// Load palette
-	memcpy(pal_bg_mem, title_bgPal, title_bgPalLen);
+	// Load sky palette
+	memcpy16(pal_bg_mem, SkyPal, 16);
 	// Load tiles into CBB 0
-	memcpy(&tile_mem[0][0], title_bgTiles, title_bgTilesLen);
+	memcpy16(&tile_mem[SkyLayer][0], SkyTiles, SkyTilesLen);
 	// Load map into SBB 30
-	memcpy(&se_mem[20][0], title_bgMap, title_bgMapLen);
+	memcpy16(&se_mem[22][0], SkyMap, SkyMapLen);
 
-	// set up BG0 for a 4bpp 64x32t map, using
-	//   using charblock 0 and screenblock 31
-	REG_BG0CNT= BG_PRIO(3) | BG_CBB(0) | BG_SBB(20) | BG_4BPP | BG_AFF_16x16;
-	REG_DISPCNT= DCNT_MODE0 | DCNT_BG0;
-
-
+	// set up BG1 for a 4bpp 32x32t map, using charblock 1 and screenblock 20
+	REG_BG3CNT= BG_PRIO(3) | BG_CBB(SkyLayer) | BG_SBB(22) | BG_4BPP | BG_REG_32x32;
 }
 
-void render_parallax1()
+#define DunesFarLayer 2
+void renderDunesFar()
 {
-	int ix, iy;
-	// Load palette
-	memcpy(pal_bg_mem+16, title_parallax1Pal, title_parallax1PalLen);
+	// Load duneFar palette
+	memcpy16(pal_bg_mem+16, DunesFarPal, 16);
 	// Load tiles into CBB 0
-	memcpy(&tile_mem[1][0], title_parallax1Tiles, title_parallax1TilesLen);
+	memcpy16(&tile_mem[DunesFarLayer][0], DunesFarTiles, DunesFarTilesLen);
 	// Load map into SBB 30
-	memcpy(&se_mem[22][0], title_parallax1Map, title_parallax1MapLen);
-      //  pal_bg_mem[17]= pal_bg_mem[17] ^ CLR_MAG;
-	// set up BG0 for a 4bpp 64x32t map, using
-	//   using charblock 0 and screenblock 31
-	REG_BG1CNT= BG_PRIO(2) | BG_CBB(1) | BG_SBB(22) | BG_4BPP | BG_AFF_16x16;
-	REG_DISPCNT= DCNT_MODE0 | DCNT_BG1;
+	memcpy16(&se_mem[19][0], DunesFarMap, DunesFarMapLen);
+	
+	//set all the tiles of that layer to theri palette
+	for (int i=0; i<DunesFarTilesLen; i++)
+		se_mem[19][i] |= SE_PALBANK(1);
 
-
+	// set up BG0 for a 4bpp 32x32t map, using charblock 0 and screenblock 22
+	REG_BG2CNT= BG_PRIO(2) | BG_CBB(DunesFarLayer) | BG_SBB(19) | BG_4BPP | BG_REG_32x32;
 }
-void render_parallax2()
+
+#define DunesNearLayer 1
+void renderDunesNear()
 {
-	int ix, iy;
-	// Load palette
-	memcpy(pal_bg_mem+32, title_parallax2Pal, title_parallax2PalLen);
+	// Load duneFar palette
+	memcpy16(pal_bg_mem+32, DunesNearPal, 16);
 	// Load tiles into CBB 0
-	memcpy(&tile_mem[2][0], title_parallax2Tiles, title_parallax2TilesLen);
+	memcpy16(&tile_mem[DunesNearLayer][0], DunesNearTiles, DunesNearTilesLen);
 	// Load map into SBB 30
-	memcpy(&se_mem[24][0], title_parallax2Map, title_parallax2MapLen);
+	memcpy16(&se_mem[20][0], DunesNearMap, DunesNearMapLen);
+	
+	//set all the tiles of that layer to theri palette
+	for (int i=0; i<DunesNearTilesLen; i++)
+		se_mem[20][i] |= SE_PALBANK(2);
 
-    //pal_bg_mem[32]= pal_bg_mem[32] ^ CLR_MAG;
-	// set up BG0 for a 4bpp 64x32t map, using
-	//   using charblock 0 and screenblock 31
-	REG_BG2CNT= BG_PRIO(1) | BG_CBB(2) | BG_SBB(24) | BG_4BPP | BG_AFF_16x16;
-	REG_DISPCNT= DCNT_MODE0 | DCNT_BG2;
-
-
+	// set up BG0 for a 4bpp 32x32t map, using charblock 0 and screenblock 22
+	REG_BG1CNT= BG_PRIO(1) | BG_CBB(DunesNearLayer) | BG_SBB(20) | BG_4BPP | BG_REG_32x32;
 }
+
+#define TitleLogoLayer 0
+void renderLogo()
+{
+	// Load duneFar palette
+	memcpy16(pal_bg_mem+48, TitleLogoPal, 16);
+	// Load tiles into CBB 0
+	memcpy16(&tile_mem[TitleLogoLayer][0], TitleLogoTiles, TitleLogoTilesLen);
+	// Load map into SBB 30
+	memcpy16(&se_mem[21][0], TitleLogoMap, TitleLogoMapLen);
+	
+	//set all the tiles of that layer to theri palette
+	for (int i=0; i<TitleLogoTilesLen; i++)
+		se_mem[21][i] |= SE_PALBANK(3);
+
+	// set up BG0 for a 4bpp 32x32t map, using charblock 0 and screenblock 22
+	REG_BG0CNT= BG_PRIO(0) | BG_CBB(TitleLogoLayer) | BG_SBB(21) | BG_4BPP | BG_REG_32x32;
+
+	//position the logo somewhere close the center i guess
+	REG_BG0HOFS= -64;
+	REG_BG0VOFS= -32;
+}
+
+//shitty wave for the bobbing logo
+const int wave[8]={0,1,3,4,5,4,2,1};
 
 int main()
 {
-	render_bg();
-	render_parallax1();
-	render_parallax2();
-	REG_DISPCNT= DCNT_MODE0 | DCNT_BG0 | DCNT_BG1 | DCNT_BG2;
+	renderDunesFar();
+	renderDunesNear();
+	renderLogo();
+	renderSky();
+	REG_DISPCNT= DCNT_MODE0 | DCNT_BG0 | DCNT_BG1 | DCNT_BG2 | DCNT_BG3;
 
-	
-/*
-	// Load palette
-	memcpy(pal_bg_mem, title_parallax1Pal, title_parallax1PalLen);
-	// Load tiles into CBB 0
-	memcpy(&tile_mem[0][0], title_parallax1Tiles, title_parallax1TilesLen);
-	// Load map into SBB 30
-	memcpy(&se_mem[28][0], title_parallax1Map, title_parallax1MapLen);
-
-	// set up BG0 for a 4bpp 64x32t map, using
-	//   using charblock 0 and screenblock 31
-	REG_BG0CNT= BG_CBB(1) | BG_SBB(28) | BG_8BPP | BG_REG_64x64;
-	REG_DISPCNT= DCNT_MODE0 | DCNT_BG1;
-*/
-	// Scroll around some
-	int x= 0, y= 0;
+	// Scroll around shit and later reuse as much of temporary variables as possible
+	int x = 0, x1 = 0, w = 0, wt = 0, temp = 0;
 	while(1)
 	{
 		vid_vsync();
 		key_poll();
 
-		x += 1;
+		//tick the ticker
+		temp++;temp%=8;
 
-		REG_BG0HOFS= x;
-		REG_BG0VOFS= y;
-		REG_BG1HOFS= x*.5;
-		REG_BG1VOFS= y;
-		REG_BG2HOFS= x*.25;
-		REG_BG2VOFS= y;
+		//stepp the layers kinda rightward 
+		if(temp == 3){x++;x1++;}//layer 2 moves every 8 frames
+		if(temp == 7){x1++;}//layer 1 moves every 4 frames
+
+		//loop them layers
+		x %= 256;x1 %= 256;
+
+		//scrolling them layers, whoosh
+		REG_BG1HOFS= x1;
+
+		REG_BG2HOFS= x;
+
+		//put the far away dunes a little higher
+		REG_BG2VOFS= 12;
+		
+		//bobbing logo
+		wt++;
+		if(wt>15)
+		{wt = 0;w++;}
+		w%=8;
+		REG_BG0VOFS= -32+wave[w];
+
+		//do some sparkles and a "press start" prompt here tomorrow?
 	}
 
 	return 0;

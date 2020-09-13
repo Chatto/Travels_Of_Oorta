@@ -1,23 +1,14 @@
 travels_of_oorta.o: \
- X:/GameDev/tonc/code/kdemos/travels_of_oorta/source/travels_of_oorta.c \
- C:\devkitPro/libgba/include/maxmod.h \
- C:\devkitPro/libgba/include/mm_types.h \
- X:/GameDev/tonc/code/kdemos/travels_of_oorta/source/toolbox.h \
- X:/GameDev/tonc/code/kdemos/travels_of_oorta/source/input.h \
- X:/GameDev/tonc/code/kdemos/travels_of_oorta/source/title_bg.h \
- X:/GameDev/tonc/code/kdemos/travels_of_oorta/source/title_parallax1.h \
- X:/GameDev/tonc/code/kdemos/travels_of_oorta/source/title_parallax2.h
-
-C:\devkitPro/libgba/include/maxmod.h:
-
-C:\devkitPro/libgba/include/mm_types.h:
-
-X:/GameDev/tonc/code/kdemos/travels_of_oorta/source/toolbox.h:
-
-X:/GameDev/tonc/code/kdemos/travels_of_oorta/source/input.h:
-
-X:/GameDev/tonc/code/kdemos/travels_of_oorta/source/title_bg.h:
-
-X:/GameDev/tonc/code/kdemos/travels_of_oorta/source/title_parallax1.h:
-
-X:/GameDev/tonc/code/kdemos/travels_of_oorta/source/title_parallax2.h:
+ C\:/devkitPro/examples/gba/homebrew/travels_of_oorta/source/travels_of_oorta.c \
+ C\:/devkitPro/examples/gba/homebrew/travels_of_oorta/source/toolbox.h \
+ C\:/devkitPro/examples/gba/homebrew/travels_of_oorta/source/input.h \
+ C\:/devkitPro/examples/gba/homebrew/travels_of_oorta/source/Sky.h \
+ C\:/devkitPro/examples/gba/homebrew/travels_of_oorta/source/DunesFar.h \
+ C\:/devkitPro/examples/gba/homebrew/travels_of_oorta/source/DunesNear.h \
+ C\:/devkitPro/examples/gba/homebrew/travels_of_oorta/source/TitleLogo.h
+C\:/devkitPro/examples/gba/homebrew/travels_of_oorta/source/toolbox.h:
+C\:/devkitPro/examples/gba/homebrew/travels_of_oorta/source/input.h:
+C\:/devkitPro/examples/gba/homebrew/travels_of_oorta/source/Sky.h:
+C\:/devkitPro/examples/gba/homebrew/travels_of_oorta/source/DunesFar.h:
+C\:/devkitPro/examples/gba/homebrew/travels_of_oorta/source/DunesNear.h:
+C\:/devkitPro/examples/gba/homebrew/travels_of_oorta/source/TitleLogo.h:
