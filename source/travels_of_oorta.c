@@ -1,8 +1,9 @@
+//#include <gba.h>
 #include <string.h>
-
+#include <maxmod.h>
 #include "toolbox.h"
+//include <types.h>
 #include "input.h"
-
 //sprites
 
 //backgrounds
@@ -11,7 +12,10 @@
 #include "DunesNear.h"
 #include "TitleLogo.h"
 
-
+//music and soundbanks
+#include "soundbank.h"
+#include "soundbank_bin.h"
+#define IRQ_VBLANK 0x001
 #define SkyLayer 3
 void renderSky()
 {
@@ -89,6 +93,14 @@ const int wave[8]={0,1,3,4,5,4,2,1};
 
 int main()
 {
+	irqInit();
+	irqSet( IRQ_VBLANK, mmVBlank );
+	irqEnable(IRQ_VBLANK);
+	// initialise maxmod with soundbank and 8 channels
+    mmInitDefault( (mm_addr)soundbank_bin, 24 );
+
+	// Start playing module
+	mmStart( MOD_BGM, MM_PLAY_LOOP );
 	renderDunesFar();
 	renderDunesNear();
 	renderLogo();
@@ -99,6 +111,9 @@ int main()
 	int x = 0, x1 = 0, w = 0, wt = 0, temp = 0;
 	while(1)
 	{
+				
+		VBlankIntrWait();
+		mmFrame();
 		vid_vsync();
 		key_poll();
 
