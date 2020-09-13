@@ -1,4 +1,4 @@
-#define MOD_BGM	0
+#define MOD_SHAMISEN	0
 #define MSL_NSONGS	1
-#define MSL_NSAMPS	14
-#define MSL_BANKSIZE	15
+#define MSL_NSAMPS	20
+#define MSL_BANKSIZE	21

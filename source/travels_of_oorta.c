@@ -97,10 +97,10 @@ int main()
 	irqSet( IRQ_VBLANK, mmVBlank );
 	irqEnable(IRQ_VBLANK);
 	// initialise maxmod with soundbank and 8 channels
-    mmInitDefault( (mm_addr)soundbank_bin, 24 );
+    mmInitDefault( (mm_addr)soundbank_bin, 16 );
 
 	// Start playing module
-	mmStart( MOD_BGM, MM_PLAY_LOOP );
+	mmStart( MOD_SHAMISEN, MM_PLAY_LOOP );
 	renderDunesFar();
 	renderDunesNear();
 	renderLogo();
@@ -112,7 +112,7 @@ int main()
 	while(1)
 	{
 				
-		VBlankIntrWait();
+		//VBlankIntrWait();
 		mmFrame();
 		vid_vsync();
 		key_poll();
